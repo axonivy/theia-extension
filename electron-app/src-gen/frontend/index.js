@@ -57,6 +57,9 @@ module.exports = Promise.resolve()
     .then(function () { return import('@theia/callhierarchy/lib/browser/callhierarchy-frontend-module').then(load) })
     .then(function () { return import('@theia/typescript/lib/browser/typescript-frontend-module').then(load) })
     .then(function () { return import('@theia/messages/lib/browser/messages-frontend-module').then(load) })
+    .then(function () { return import('@theia/scm/lib/browser/scm-frontend-module').then(load) })
+    .then(function () { return import('@theia/git/lib/browser/git-frontend-module').then(load) })
+    .then(function () { return import('@theia/git/lib/electron-browser/prompt/electron-git-prompt-module').then(load) })
     .then(function () { return import('theia-extension/lib/browser/theia-extension-frontend-module').then(load) })
     .then(start).catch(reason => {
         console.error('Failed to start the frontend application.');

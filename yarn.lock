@@ -280,6 +280,19 @@
     unzipper "^0.9.11"
     yargs "^11.1.0"
 
+"@theia/file-search@latest":
+  version "0.9.0"
+  resolved "https://registry.yarnpkg.com/@theia/file-search/-/file-search-0.9.0.tgz#71e10bf4177f1a03285960cca9bc200062f3e268"
+  integrity sha512-G4TLVUpcLBPZQKmjitsuPiMYaGkrLZh+HMaySMB72OLV+cJN9/86+vQjBw6pzow22MVAtSlqRTEvwdxS/XcXWw==
+  dependencies:
+    "@theia/core" "^0.9.0"
+    "@theia/editor" "^0.9.0"
+    "@theia/filesystem" "^0.9.0"
+    "@theia/process" "^0.9.0"
+    "@theia/workspace" "^0.9.0"
+    fuzzy "^0.1.3"
+    vscode-ripgrep "^1.2.4"
+
 "@theia/filesystem@^0.9.0", "@theia/filesystem@latest":
   version "0.9.0"
   resolved "https://registry.yarnpkg.com/@theia/filesystem/-/filesystem-0.9.0.tgz#d8c91421fc67a0ab2757da361957be4528300fc4"
@@ -305,6 +318,31 @@
     trash "^4.0.1"
     uuid "^3.2.1"
     zip-dir "^1.0.2"
+
+"@theia/git@latest":
+  version "0.9.0"
+  resolved "https://registry.yarnpkg.com/@theia/git/-/git-0.9.0.tgz#1ff2373231d6867fa6df188dd98d02f694e3cc5d"
+  integrity sha512-8k4RDnIpGxB9WmItxkThnk3j0NR6U638oh00Dri+VnBKsfy+VtNk2Fn7zYz4OOSb+pqMLajFy1/oMBf1qvaJMg==
+  dependencies:
+    "@theia/core" "^0.9.0"
+    "@theia/editor" "^0.9.0"
+    "@theia/filesystem" "^0.9.0"
+    "@theia/languages" "^0.9.0"
+    "@theia/navigator" "^0.9.0"
+    "@theia/scm" "^0.9.0"
+    "@theia/workspace" "^0.9.0"
+    "@types/diff" "^3.2.2"
+    "@types/fs-extra" "^4.0.2"
+    "@types/p-queue" "^2.3.1"
+    diff "^3.4.0"
+    dugite-extra "0.1.11"
+    find-git-exec "^0.0.1-alpha.2"
+    find-git-repositories "^0.1.0"
+    fs-extra "^4.0.2"
+    moment "^2.21.0"
+    octicons "^7.1.0"
+    p-queue "^2.4.2"
+    ts-md5 "^1.2.2"
 
 "@theia/json@^0.9.0":
   version "0.9.0"
@@ -424,6 +462,21 @@
     "@theia/node-pty" "0.7.8-theia004"
     string-argv "^0.1.1"
 
+"@theia/scm@^0.9.0":
+  version "0.9.0"
+  resolved "https://registry.yarnpkg.com/@theia/scm/-/scm-0.9.0.tgz#3a8378725bd26f52f4069d7cdb3db52a065c592a"
+  integrity sha512-hA0FpjyVCXZdSuobDtuyIIC+F6lGFHR2LRL2aKpeX0oBdqqc7SuElSBx7+DkPHvKuRA9eCS63ynKDzyippKG3A==
+  dependencies:
+    "@theia/core" "^0.9.0"
+    "@theia/editor" "^0.9.0"
+    "@theia/filesystem" "^0.9.0"
+    "@theia/navigator" "^0.9.0"
+    "@types/diff" "^3.2.2"
+    "@types/p-debounce" "^1.0.1"
+    diff "^3.4.0"
+    p-debounce "^2.1.0"
+    ts-md5 "^1.2.2"
+
 "@theia/terminal@latest":
   version "0.9.0"
   resolved "https://registry.yarnpkg.com/@theia/terminal/-/terminal-0.9.0.tgz#700ce76c2f4a4d26bc5ebd7304863e1ec911d083"
@@ -526,6 +579,11 @@
   dependencies:
     "@types/node" "*"
 
+"@types/diff@^3.2.2":
+  version "3.5.3"
+  resolved "https://registry.yarnpkg.com/@types/diff/-/diff-3.5.3.tgz#7c6c3721ba454d838790100faf7957116ee7deab"
+  integrity sha512-YrLagYnL+tfrgM7bQ5yW34pi5cg9pmh5Gbq2Lmuuh+zh0ZjmK2fU3896PtlpJT3IDG2rdkoG30biHJepgIsMnw==
+
 "@types/events@*":
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/@types/events/-/events-3.0.0.tgz#2862f3f58a9a7f7c3e78d79f130dd4d71c25c2a7"
@@ -602,6 +660,23 @@
   version "10.14.16"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-10.14.16.tgz#4d690c96cbb7b2728afea0e260d680501b3da5cf"
   integrity sha512-/opXIbfn0P+VLt+N8DE4l8Mn8rbhiJgabU96ZJ0p9mxOkIks5gh6RUnpHak7Yh0SFkyjO/ODbxsQQPV2bpMmyA==
+
+"@types/node@^8.0.26":
+  version "8.10.52"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-8.10.52.tgz#ef0ca1809994e20186090408b8cb7f2a6877d5f9"
+  integrity sha512-2RbW7WXeLex6RI+kQSxq6Ym0GiVcODeQ4Km7MnnTX5BHdOGQnqVa+s6AUmAW+OFYAJ8wv9QxvNZXm7/kBdGTVw==
+
+"@types/p-debounce@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@types/p-debounce/-/p-debounce-1.0.1.tgz#c9956067a240dffedf2682a24d0712ffa5e3c8fe"
+  integrity sha512-zlAn04fH4cGYPAjmYW8Tst/vxn78IJmD3PVMxxBnl3IYAG+9aGKWCu/311fPHnePJMwyxGeOhi63neSiSgM+iw==
+  dependencies:
+    p-debounce "*"
+
+"@types/p-queue@^2.3.1":
+  version "2.3.2"
+  resolved "https://registry.yarnpkg.com/@types/p-queue/-/p-queue-2.3.2.tgz#16bc5fece69ef85efaf2bce8b13f3ebe39c5a1c8"
+  integrity sha512-eKAv5Ql6k78dh3ULCsSBxX6bFNuGjTmof5Q/T6PiECDq0Yf8IIn46jCyp3RJvCi8owaEmm3DZH1PEImjBMd/vQ==
 
 "@types/prop-types@*":
   version "15.7.1"
@@ -2346,6 +2421,13 @@ chardet@^0.7.0:
   resolved "https://registry.yarnpkg.com/chardet/-/chardet-0.7.0.tgz#90094849f0937f2eedc2425d0d28a9e5f0cbad9e"
   integrity sha512-mT8iDcrh03qDGRRmoA2hmBJnxpllMR+0/0qlzjqZES6NdiWDcZkCNAk4rPFZ9Q85r27unkiNNg8ZOiwZXBHwcA==
 
+checksum@^0.1.1:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/checksum/-/checksum-0.1.1.tgz#dc6527d4c90be8560dbd1ed4cecf3297d528e9e9"
+  integrity sha1-3GUn1MkL6FYNvR7Uzs8yl9Uo6ek=
+  dependencies:
+    optimist "~0.3.5"
+
 chokidar@^2.0.2:
   version "2.1.8"
   resolved "https://registry.yarnpkg.com/chokidar/-/chokidar-2.1.8.tgz#804b3a7b6a99358c3c5c61e71d8728f041cff917"
@@ -3359,7 +3441,7 @@ detect-libc@^1.0.2, detect-libc@^1.0.3:
   resolved "https://registry.yarnpkg.com/detect-libc/-/detect-libc-1.0.3.tgz#fa137c4bd698edf55cd5cd02ac559f91a4c4ba9b"
   integrity sha1-+hN8S9aY7fVc1c0CrFWfkaTEups=
 
-diff@^3.5.0:
+diff@^3.4.0, diff@^3.5.0:
   version "3.5.0"
   resolved "https://registry.yarnpkg.com/diff/-/diff-3.5.0.tgz#800c0dd1e0a8bfbc95835c202ad220fe317e5a12"
   integrity sha512-A46qtFgd+g7pDZinpnwiRJtxbC1hpgf0uzP3iG89scHk0AUC7A1TGxf5OiiOUv/JMZR8GOt8hL900hV0bOy5xA==
@@ -3431,6 +3513,28 @@ dtrace-provider@~0.8:
   integrity sha512-b7Z7cNtHPhH9EJhNNbbeqTcXB8LGFFZhq1PGgEvpeHlzd36bhbdTWoE/Ba/YguqpBSlAPKnARWhVlhunCMwfxg==
   dependencies:
     nan "^2.14.0"
+
+dugite-extra@0.1.11:
+  version "0.1.11"
+  resolved "https://registry.yarnpkg.com/dugite-extra/-/dugite-extra-0.1.11.tgz#b0cc8c94990c1658240659efdcfc1b03669f1ce9"
+  integrity sha512-X3jmKopZrTGG00FefniFSptcAIH3sgB7DtOpdlqnG9Z1SZ+gjAvB4eeTdTNzz59ekcwUQjM67s86kl7dkG1nKw==
+  dependencies:
+    byline "^5.0.0"
+    dugite-no-gpl "1.69.0"
+    find-git-exec "0.0.1-alpha.2"
+    upath "^1.0.0"
+
+dugite-no-gpl@1.69.0:
+  version "1.69.0"
+  resolved "https://registry.yarnpkg.com/dugite-no-gpl/-/dugite-no-gpl-1.69.0.tgz#bc9007cf5a595180f563ccc0e4f2cc80ebbaa52e"
+  integrity sha512-9NzPMyWW1uWEm+rEGivfQ0+zZ9soXrtk/zb6FIVpPa5CLoUdhMkLY4jHc0DDyayarxivJgrI/rHDdTUej4Zhrw==
+  dependencies:
+    checksum "^0.1.1"
+    mkdirp "^0.5.1"
+    progress "^2.0.0"
+    request "^2.86.0"
+    rimraf "^2.5.4"
+    tar "^4.0.2"
 
 duplexer2@~0.1.4:
   version "0.1.4"
@@ -4064,6 +4168,20 @@ find-cache-dir@^2.1.0:
     commondir "^1.0.1"
     make-dir "^2.0.0"
     pkg-dir "^3.0.0"
+
+find-git-exec@0.0.1-alpha.2, find-git-exec@^0.0.1-alpha.2:
+  version "0.0.1-alpha.2"
+  resolved "https://registry.yarnpkg.com/find-git-exec/-/find-git-exec-0.0.1-alpha.2.tgz#02c266b3be6e411c19aa5fd6f813c96a73286fac"
+  integrity sha1-AsJms75uQRwZql/W+BPJanMob6w=
+  dependencies:
+    "@types/node" "^8.0.26"
+
+find-git-repositories@^0.1.0:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/find-git-repositories/-/find-git-repositories-0.1.1.tgz#2ba3374cbf6d6a8aadeb0370b86fdbb88a90e43c"
+  integrity sha512-v3Z6lE2+6Kat5ujOLucCGyijJ6yfv1/V7uauRYQshlSjv9177Rk3Eg8J6x2C/zAsQHJym4HHHLuOoy3Sl5KqzQ==
+  dependencies:
+    nan "^2.0.0"
 
 find-up@^1.0.0:
   version "1.1.2"
@@ -6646,6 +6764,13 @@ object.pick@^1.3.0:
   dependencies:
     isobject "^3.0.1"
 
+octicons@^7.1.0:
+  version "7.4.0"
+  resolved "https://registry.yarnpkg.com/octicons/-/octicons-7.4.0.tgz#0be0082ed75b81e680800ef978bf47078b670091"
+  integrity sha512-j53BDX+FpJ4DQwENARbk9hHkwG/Oaq5NPUMNzYdGxRA/R5M6BbPVQEakUVMNKLzvzPue/gEEUTtSj6utFse5QQ==
+  dependencies:
+    object-assign "^4.1.1"
+
 on-finished@~2.3.0:
   version "2.3.0"
   resolved "https://registry.yarnpkg.com/on-finished/-/on-finished-2.3.0.tgz#20f1336481b083cd75337992a16971aa2d906947"
@@ -6692,6 +6817,13 @@ optimist@^0.6.1:
   integrity sha1-2j6nRob6IaGaERwybpDrFaAZZoY=
   dependencies:
     minimist "~0.0.1"
+    wordwrap "~0.0.2"
+
+optimist@~0.3.5:
+  version "0.3.7"
+  resolved "https://registry.yarnpkg.com/optimist/-/optimist-0.3.7.tgz#c90941ad59e4273328923074d2cf2e7cbc6ec0d9"
+  integrity sha1-yQlBrVnkJzMokjB00s8ufLxuwNk=
+  dependencies:
     wordwrap "~0.0.2"
 
 ora@^0.2.3:
@@ -6758,6 +6890,11 @@ p-cancelable@^0.4.0:
   resolved "https://registry.yarnpkg.com/p-cancelable/-/p-cancelable-0.4.1.tgz#35f363d67d52081c8d9585e37bcceb7e0bbcb2a0"
   integrity sha512-HNa1A8LvB1kie7cERyy21VNeHb2CWJJYqyyC2o3klWFfMGlFmWv2Z7sFgZH8ZiaYL95ydToKTFVXgMV/Os0bBQ==
 
+p-debounce@*, p-debounce@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/p-debounce/-/p-debounce-2.1.0.tgz#e79f70c6e325cbb9bddbcbec0b81025084671ad3"
+  integrity sha512-M9bMt62TTnozdZhqFgs+V7XD2MnuKCaz+7fZdlu2/T7xruI3uIE5CicQ0vx1hV7HIUYF0jF+4/R1AgfOkl74Qw==
+
 p-debounce@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/p-debounce/-/p-debounce-1.0.0.tgz#cb7f2cbeefd87a09eba861e112b67527e621e2fd"
@@ -6817,6 +6954,11 @@ p-map@^1.1.1, p-map@^1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/p-map/-/p-map-1.2.0.tgz#e4e94f311eabbc8633a1e79908165fca26241b6b"
   integrity sha512-r6zKACMNhjPJMTl8KcFH4li//gkrXWfbD6feV8l6doRHlzljFWGJ2AP6iKaCJXyZmAUMOPtvbW7EXkbWO/pLEA==
+
+p-queue@^2.4.2:
+  version "2.4.2"
+  resolved "https://registry.yarnpkg.com/p-queue/-/p-queue-2.4.2.tgz#03609826682b743be9a22dba25051bd46724fc34"
+  integrity sha512-n8/y+yDJwBjoLQe1GSJbbaYQLTI7QHNZI2+rpmCDbe++WLf9HC3gf6iqj5yfPAV71W4UF3ql5W1+UBPXoXTxng==
 
 p-reduce@^1.0.0:
   version "1.0.0"
@@ -7430,6 +7572,11 @@ progress-stream@^1.1.0:
     speedometer "~0.1.2"
     through2 "~0.2.3"
 
+progress@^2.0.0:
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/progress/-/progress-2.0.3.tgz#7e8cf8d8f5b8f239c1bc68beb4eb78567d572ef8"
+  integrity sha512-7PiHtLll5LdnKIMw100I+8xJXR5gW2QwWYkT6iJva0bXitZKa/XMrSbdmg3r2Xnaidz9Qumd0VPaMrZlF9V9sA==
+
 promise-inflight@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/promise-inflight/-/promise-inflight-1.0.1.tgz#98472870bf228132fcbdd868129bad12c3c029e3"
@@ -7979,7 +8126,7 @@ request-light@^0.2.4:
     https-proxy-agent "^2.2.1"
     vscode-nls "^4.0.0"
 
-request@^2.45.0, request@^2.82.0, request@^2.83.0, request@^2.87.0:
+request@^2.45.0, request@^2.82.0, request@^2.83.0, request@^2.86.0, request@^2.87.0:
   version "2.88.0"
   resolved "https://registry.yarnpkg.com/request/-/request-2.88.0.tgz#9c2fca4f7d35b592efe57c7f0a55e81052124fef"
   integrity sha512-NAqBSrijGLZdM0WZNsInLJpkJokL72XYjUpnB0iwsRgxh7dB6COrHnTBNwN0E+lHDAJzu7kLAkDeY08z2/A0hg==
@@ -8873,7 +9020,7 @@ tar@^2.0.0:
     fstream "^1.0.12"
     inherits "2"
 
-tar@^4, tar@^4.4.8:
+tar@^4, tar@^4.0.2, tar@^4.4.8:
   version "4.4.10"
   resolved "https://registry.yarnpkg.com/tar/-/tar-4.4.10.tgz#946b2810b9a5e0b26140cf78bea6b0b0d689eba1"
   integrity sha512-g2SVs5QIxvo6OLp0GudTqEf05maawKUxXru104iaayWA09551tFCTI8f1Asb4lPfkBr91k07iL4c11XO3/b0tA==
@@ -9270,7 +9417,7 @@ unzipper@^0.9.11:
     readable-stream "~2.3.6"
     setimmediate "~1.0.4"
 
-upath@^1.1.1:
+upath@^1.0.0, upath@^1.1.1:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/upath/-/upath-1.1.2.tgz#3db658600edaeeccbe6db5e684d67ee8c2acd068"
   integrity sha512-kXpym8nmDmlCBr7nKdIx8P2jNBa+pBpIUFRnKJ4dr8htyYGJFokkr2ZvERRtUN+9SY+JqXouNgUPtv6JQva/2Q==
@@ -9536,6 +9683,11 @@ vscode-nls@^4.0.0, vscode-nls@^4.1.1:
   version "4.1.1"
   resolved "https://registry.yarnpkg.com/vscode-nls/-/vscode-nls-4.1.1.tgz#f9916b64e4947b20322defb1e676a495861f133c"
   integrity sha512-4R+2UoUUU/LdnMnFjePxfLqNhBS8lrAFyX7pjb2ud/lqDkrUavFUTcG7wR0HBZFakae0Q6KLBFjMS6W93F403A==
+
+vscode-ripgrep@^1.2.4:
+  version "1.5.6"
+  resolved "https://registry.yarnpkg.com/vscode-ripgrep/-/vscode-ripgrep-1.5.6.tgz#93bf5c99ca5f8248950a305e224f6ca153c30af4"
+  integrity sha512-WRIM9XpUj6dsfdAmuI3ANbmT1ysPUVsYy/2uCLDHJa9kbiB4T7uGvFnnc0Rgx2qQnyRAwL7PeWaFgUljPPxf2g==
 
 vscode-textbuffer@^1.0.0:
   version "1.0.0"

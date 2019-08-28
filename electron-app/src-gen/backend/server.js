@@ -43,6 +43,8 @@ module.exports = (port, host, argv) => Promise.resolve()
     .then(function () { return Promise.resolve(require('@theia/json/lib/node/json-backend-module')).then(load) })
     .then(function () { return Promise.resolve(require('@theia/terminal/lib/node/terminal-backend-module')).then(load) })
     .then(function () { return Promise.resolve(require('@theia/typescript/lib/node/typescript-backend-module')).then(load) })
+    .then(function () { return Promise.resolve(require('@theia/git/lib/node/git-backend-module')).then(load) })
+    .then(function () { return Promise.resolve(require('@theia/git/lib/electron-node/env/electron-git-env-module')).then(load) })
     .then(() => start(port, host, argv)).catch(reason => {
         console.error('Failed to start the backend application.');
         if (reason) {

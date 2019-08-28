@@ -2,7 +2,7 @@ import { injectable, inject } from "inversify";
 import { CommandContribution, CommandRegistry, MenuContribution, MenuModelRegistry, MessageService, MAIN_MENU_BAR } from "@theia/core/lib/common";
 import { CommonMenus } from "@theia/core/lib/browser";
 import { TerminalService } from '@theia/terminal/lib/browser/base/terminal-service';
-import { TerminalWidgetOptions, TerminalWidget } from "@theia/terminal/lib/browser/base/terminal-widget";
+import { TerminalWidget } from "@theia/terminal/lib/browser/base/terminal-widget";
 import { TerminalWidgetFactoryOptions } from '@theia/terminal/lib/browser/terminal-widget-impl';
 
 export const TheiaExtensionHelloCommand = {

@@ -8,6 +8,10 @@
   "devDependencies": {
     "lerna": "2.4.0"
   },
+  "dependencies": {
+    "@theia/git": "latest",
+    "@theia/file-search": "latest"
+  },
   "workspaces": [
     "theia-extension", "browser-app", "electron-app"
   ]
