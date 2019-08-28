@@ -10,6 +10,9 @@ import {
 
 import { ContainerModule } from "inversify";
 
+import '../../src/browser/style/index.css';
+import './branding';
+
 export default new ContainerModule(bind => {
     // add your contribution bindings here
     

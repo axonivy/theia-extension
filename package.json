@@ -10,7 +10,8 @@
   },
   "dependencies": {
     "@theia/git": "latest",
-    "@theia/file-search": "latest"
+    "@theia/file-search": "latest",
+    "@theia/java": "latest"
   },
   "workspaces": [
     "theia-extension", "browser-app", "electron-app"

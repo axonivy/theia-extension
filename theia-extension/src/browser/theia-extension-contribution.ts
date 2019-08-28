@@ -5,11 +5,6 @@ import { TerminalService } from '@theia/terminal/lib/browser/base/terminal-servi
 import { TerminalWidget } from "@theia/terminal/lib/browser/base/terminal-widget";
 import { TerminalWidgetFactoryOptions } from '@theia/terminal/lib/browser/terminal-widget-impl';
 
-export const TheiaExtensionHelloCommand = {
-    id: 'TheiaExtension.hellocommand',
-    label: "Shows a message"
-};
-
 export namespace AxonIvyCommands {
     export const Start = {
         id: 'Start.engine',
@@ -19,6 +14,11 @@ export namespace AxonIvyCommands {
     export const Stop = {
         id: 'Stop.engine',
         label: 'Stop engine'
+    };
+
+    export const NewProject = {
+        id: 'New.project',
+        label: 'New Project'
     }
 }
 
@@ -33,7 +33,7 @@ export class TheiaExtensionCommandContribution implements CommandContribution {
     ) { }
 
     registerCommands(registry: CommandRegistry): void {
-        registry.registerCommand(TheiaExtensionHelloCommand, {
+        registry.registerCommand(AxonIvyCommands.NewProject, {
             execute: () => this.messageService.info('Hello World!')
         });
         registry.registerCommand(AxonIvyCommands.Start, {
@@ -69,9 +69,9 @@ export class TheiaExtensionMenuContribution implements MenuContribution {
     AXONIVY = [...MAIN_MENU_BAR, '8_axonivy'];
 
     registerMenus(menus: MenuModelRegistry): void {
-        menus.registerMenuAction(CommonMenus.EDIT_FIND, {
-            commandId: TheiaExtensionHelloCommand.id,
-            label: 'Say Hello'
+        menus.registerMenuAction(CommonMenus.FILE_NEW, {
+            commandId: AxonIvyCommands.NewProject.id,
+            label: AxonIvyCommands.NewProject.label
         });
         menus.registerSubmenu(this.AXONIVY, 'Axon Ivy');
         menus.registerMenuAction(this.AXONIVY, {

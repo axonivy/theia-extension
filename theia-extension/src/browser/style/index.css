@@ -1,0 +1,16 @@
+.theia-icon {
+    background-image: var(--theia-menu-logo);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 24px;
+    margin-top: 3px;
+    margin-bottom: 3px;
+    height: 24px;
+}
+
+ #theia-main-content-panel {
+    background-image: var(--theia-brand-logo);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: var(--theia-brand-logo-size);
+}

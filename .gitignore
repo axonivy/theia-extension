@@ -6,3 +6,4 @@ lib
 *-example/*
 !*-example/package.json
 .ivy-engine
+src-gen
