@@ -1,0 +1,42 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>ch.ivyteam.ivy</groupId>
+	<artifactId>engine-cockpit-config</artifactId>
+	<version>1.0.0-SNAPSHOT</version>
+	<packaging>pom</packaging>
+
+	<properties>
+		<engine.page.url>https://developer.axonivy.com/download/dev</engine.page.url>
+		<engine.dir>.ivy-engine</engine.dir>
+	</properties>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>com.axonivy.ivy.ci</groupId>
+				<artifactId>project-build-plugin</artifactId>
+				<version>7.4.0-SNAPSHOT</version>
+				<extensions>true</extensions>
+				<configuration>
+					<ivyVersion>[7.4.0,]</ivyVersion>
+					<engineListPageUrl>${engine.page.url}</engineListPageUrl>
+                    <engineDirectory>${engine.dir}</engineDirectory>
+					<skipScriptValidation>false</skipScriptValidation>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+	<pluginRepositories>
+		<!-- Snapshot releases are available via sonatype.org -->
+		<pluginRepository>
+			<id>sonatype</id>
+			<url>https://oss.sonatype.org/content/repositories/snapshots</url>
+			<snapshots>
+				<updatePolicy>always</updatePolicy>
+			</snapshots>
+		</pluginRepository>
+	</pluginRepositories>
+</project>

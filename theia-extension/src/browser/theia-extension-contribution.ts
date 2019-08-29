@@ -45,7 +45,7 @@ export class TheiaExtensionCommandContribution implements CommandContribution {
             execute: () => this.openTerminal("Deploy to engine",
                 "mvn -Dmaven.test.skip=true package && \n\
                 mkdir theia-app && \n\
-                find */target/* -iname '*.iar' -exec cp {} theia-app \\; && \n\
+                find -iname '*.iar' -exec cp {} theia-app \\; && \n\
                 zip -j theia-app.zip theia-app/* && \n\
                 rm -r theia-app && \n\
                 mv theia-app.zip .ivy-engine/deploy/; \n", 
