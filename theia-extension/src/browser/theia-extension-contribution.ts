@@ -6,6 +6,11 @@ import { TerminalWidget } from "@theia/terminal/lib/browser/base/terminal-widget
 import { TerminalWidgetFactoryOptions } from '@theia/terminal/lib/browser/terminal-widget-impl';
 
 export namespace AxonIvyCommands {
+    export const Deploy = {
+        id: 'Deploy.to.engine',
+        label: 'Deploy to engine'
+    }
+
     export const Start = {
         id: 'Start.engine',
         label: 'Start engine'
@@ -36,22 +41,36 @@ export class TheiaExtensionCommandContribution implements CommandContribution {
         registry.registerCommand(AxonIvyCommands.NewProject, {
             execute: () => this.messageService.info('Hello World!')
         });
+        registry.registerCommand(AxonIvyCommands.Deploy, {
+            execute: () => this.openTerminal("Deploy to engine",
+                "mvn -Dmaven.test.skip=true package && \n\
+                mkdir theia-app && \n\
+                find */target/* -iname '*.iar' -exec cp {} theia-app \\; && \n\
+                zip -j theia-app.zip theia-app/* && \n\
+                rm -r theia-app && \n\
+                mv theia-app.zip .ivy-engine/deploy/; \n", 
+                "Build projects and deploy them to the engine")
+        });
         registry.registerCommand(AxonIvyCommands.Start, {
-            execute: () => this.openTerminal("mvn com.axonivy.ivy.ci:project-build-plugin:7.4.0-SNAPSHOT:installEngine \
-              -Divy.engine.list.url=http://zugprojenkins/job/ivy-core_product/job/master/lastSuccessfulBuild/ \
-              -Divy.engine.directory=./.ivy-engine \n \
-              .ivy-engine/bin/AxonIvyEngine \n", "Start engine...")
+            execute: () => this.openTerminal("Axon Ivy Engine", 
+                "mvn com.axonivy.ivy.ci:project-build-plugin:7.4.0-SNAPSHOT:installEngine \
+                -Divy.engine.list.url=http://zugprojenkins/job/ivy-core_product/job/master/lastSuccessfulBuild/ \
+                -Divy.engine.directory=./.ivy-engine \n \
+                .ivy-engine/bin/AxonIvyEngine \n", "Start engine...")
         });
         registry.registerCommand(AxonIvyCommands.Stop, {
-            execute: () => this.openTerminal("shutdown\n", "Stop engine...")
+            execute: () => this.openTerminal("Axon Ivy Engine",
+                "shutdown\n", 
+                "Stop engine...")
         });
     }
 
-    async openTerminal(command: string, info: string): Promise<void> {
+    async openTerminal(terminalTitle: string, command: string, info: string): Promise<void> {
+        this.terminal = this.terminalService.all.find(t => t.title.label == terminalTitle)
         if (!this.terminal) {
             this.terminal = <TerminalWidget>await this.terminalService.newTerminal(<TerminalWidgetFactoryOptions>{ 
                 created: new Date().toString(),
-                title: "Axon Ivy Engine",
+                title: terminalTitle,
                 useServerTitle: false,
                 destroyTermOnClose: true
             });
@@ -67,6 +86,8 @@ export class TheiaExtensionCommandContribution implements CommandContribution {
 export class TheiaExtensionMenuContribution implements MenuContribution {
 
     AXONIVY = [...MAIN_MENU_BAR, '8_axonivy'];
+    DEPLOY = [...this.AXONIVY, '1_deploy'];
+    ENGINE = [...this.AXONIVY, '2_engine'];
 
     registerMenus(menus: MenuModelRegistry): void {
         menus.registerMenuAction(CommonMenus.FILE_NEW, {
@@ -74,11 +95,15 @@ export class TheiaExtensionMenuContribution implements MenuContribution {
             label: AxonIvyCommands.NewProject.label
         });
         menus.registerSubmenu(this.AXONIVY, 'Axon Ivy');
-        menus.registerMenuAction(this.AXONIVY, {
+        menus.registerMenuAction(this.DEPLOY, {
+            commandId: AxonIvyCommands.Deploy.id,
+            label: AxonIvyCommands.Deploy.label
+        })
+        menus.registerMenuAction(this.ENGINE, {
             commandId: AxonIvyCommands.Start.id,
             label: AxonIvyCommands.Start.label
         });
-        menus.registerMenuAction(this.AXONIVY, {
+        menus.registerMenuAction(this.ENGINE, {
             commandId: AxonIvyCommands.Stop.id,
             label: AxonIvyCommands.Stop.label
         });
