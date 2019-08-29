@@ -1,6 +1,9 @@
 # theia-extension
 The example of how to build the Theia-based applications with the theia-extension.
 
+## Open in Gidpod (eclipse theia based Cloud-IDE)
+[![Open in Gitpod ](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/axonivy/ivy-theia-extension/)
+
 ## Getting started
 
 Install [nvm](https://github.com/creationix/nvm#install-script).
