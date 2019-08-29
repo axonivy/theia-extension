@@ -8,11 +8,6 @@
   "devDependencies": {
     "lerna": "3.16.4"
   },
-  "dependencies": {
-    "@theia/file-search": "latest",
-    "@theia/git": "latest",
-    "@theia/java": "latest"
-  },
   "workspaces": [
     "theia-extension",
     "browser-app",
