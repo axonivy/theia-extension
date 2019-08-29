@@ -54,7 +54,7 @@ export class TheiaExtensionCommandContribution implements CommandContribution {
         registry.registerCommand(AxonIvyCommands.Start, {
             execute: () => this.openTerminal("Axon Ivy Engine", 
                 "mvn com.axonivy.ivy.ci:project-build-plugin:7.4.0-SNAPSHOT:installEngine \
-                -Divy.engine.list.url=http://zugprojenkins/job/ivy-core_product/job/master/lastSuccessfulBuild/ \
+                -Divy.engine.list.url=https://developer.axonivy.com/download/dev \
                 -Divy.engine.directory=./.ivy-engine \n \
                 .ivy-engine/bin/AxonIvyEngine \n", "Start engine...")
         });
