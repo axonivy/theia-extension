@@ -1,30 +1,29 @@
 import { injectable, inject } from "inversify";
 import { CommandContribution, CommandRegistry, MenuContribution, MenuModelRegistry, MessageService, MAIN_MENU_BAR } from "@theia/core/lib/common";
-import { CommonMenus } from "@theia/core/lib/browser";
 import { TerminalService } from '@theia/terminal/lib/browser/base/terminal-service';
 import { TerminalWidget } from "@theia/terminal/lib/browser/base/terminal-widget";
 import { TerminalWidgetFactoryOptions } from '@theia/terminal/lib/browser/terminal-widget-impl';
 
+export const AXONIVYCATEGORY = 'Axon Ivy';
+
 export namespace AxonIvyCommands {
     export const Deploy = {
         id: 'Deploy.to.engine',
+        category: AXONIVYCATEGORY,
         label: 'Deploy to engine'
     }
 
     export const Start = {
         id: 'Start.engine',
+        category: AXONIVYCATEGORY,
         label: 'Start engine'
     };
 
     export const Stop = {
         id: 'Stop.engine',
+        category: AXONIVYCATEGORY,
         label: 'Stop engine'
     };
-
-    export const NewProject = {
-        id: 'New.project',
-        label: 'New Project'
-    }
 }
 
 @injectable()
@@ -38,9 +37,6 @@ export class TheiaExtensionCommandContribution implements CommandContribution {
     ) { }
 
     registerCommands(registry: CommandRegistry): void {
-        registry.registerCommand(AxonIvyCommands.NewProject, {
-            execute: () => this.messageService.info('Hello World!')
-        });
         registry.registerCommand(AxonIvyCommands.Deploy, {
             execute: () => this.openTerminal("Deploy to engine",
                 "mvn -Dmaven.test.skip=true package && \n\
@@ -90,10 +86,6 @@ export class TheiaExtensionMenuContribution implements MenuContribution {
     ENGINE = [...this.AXONIVY, '2_engine'];
 
     registerMenus(menus: MenuModelRegistry): void {
-        menus.registerMenuAction(CommonMenus.FILE_NEW, {
-            commandId: AxonIvyCommands.NewProject.id,
-            label: AxonIvyCommands.NewProject.label
-        });
         menus.registerSubmenu(this.AXONIVY, 'Axon Ivy');
         menus.registerMenuAction(this.DEPLOY, {
             commandId: AxonIvyCommands.Deploy.id,
