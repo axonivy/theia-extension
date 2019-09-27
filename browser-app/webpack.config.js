@@ -13,9 +13,9 @@ const { mode }  = yargs.option('mode', {
 }).argv;
 const development = mode === 'development';
 
-const monacoEditorCorePath = development ? '/home/lli/Gitworkspace/CodeCamp/theia-extension/node_modules/@typefox/monaco-editor-core/dev/vs' : '/home/lli/Gitworkspace/CodeCamp/theia-extension/node_modules/@typefox/monaco-editor-core/min/vs';
-const monacoCssLanguagePath = '/home/lli/Gitworkspace/CodeCamp/theia-extension/node_modules/monaco-css/release/min';
-const monacoHtmlLanguagePath = '/home/lli/Gitworkspace/CodeCamp/theia-extension/node_modules/monaco-html/release/min';
+const monacoEditorCorePath = development ? '/opt/dev/ivy/theia/ivy-theia-extension/node_modules/@typefox/monaco-editor-core/dev/vs' : '/opt/dev/ivy/theia/ivy-theia-extension/node_modules/@typefox/monaco-editor-core/min/vs';
+const monacoCssLanguagePath = '/opt/dev/ivy/theia/ivy-theia-extension/node_modules/monaco-css/release/min';
+const monacoHtmlLanguagePath = '/opt/dev/ivy/theia/ivy-theia-extension/node_modules/monaco-html/release/min';
 
 module.exports = {
     entry: path.resolve(__dirname, 'src-gen/frontend/index.js'),
@@ -42,11 +42,11 @@ module.exports = {
             },
             {
                 test: /\.css$/,
-                exclude: /\.useable\.css$/,
+                exclude: /materialcolors\.css$|\.useable\.css$/,
                 loader: 'style-loader!css-loader'
             },
             {
-                test: /\.useable\.css$/,
+                test: /materialcolors\.css$|\.useable\.css$/,
                 use: [
                   {
                     loader: 'style-loader/useable',
@@ -70,7 +70,7 @@ module.exports = {
                 }
             },
             {
-                // see https://github.com/theia-ide/theia/issues/556
+                // see https://github.com/eclipse-theia/theia/issues/556
                 test: /source-map-support/,
                 loader: 'ignore-loader'
             },
@@ -97,6 +97,26 @@ module.exports = {
                 test: /\.plist$/,
                 loader: "file-loader",
             },
+            {
+                test: /\.js$/,
+                // include only es6 dependencies to transpile them to es5 classes
+                include: /monaco-languageclient|vscode-ws-jsonrpc|vscode-jsonrpc|vscode-languageserver-protocol|vscode-languageserver-types|vscode-languageclient/,
+                use: {
+                    loader: 'babel-loader',
+                    options: {
+                        presets: ['@babel/preset-env'],
+                        plugins: [
+                            // reuse runtime babel lib instead of generating it in each js file
+                            '@babel/plugin-transform-runtime',
+                            // ensure that classes are transpiled
+                            '@babel/plugin-transform-classes'
+                        ],
+                        // see https://github.com/babel/babel/issues/8900#issuecomment-431240426
+                        sourceType: 'unambiguous',
+                        cacheDirectory: true
+                    }
+                }
+            }
         ]
     },
     resolve: {
