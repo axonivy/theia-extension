@@ -19,8 +19,8 @@ RUN bash -c ". .nvm/nvm.sh \
     && npm install -g yarn"
 
 RUN bash -c ". /home/gitpod/.sdkman/bin/sdkman-init.sh \
-             && sdk install java 11.0.2-open \
-             && sdk default java 11.0.2-open"
+             && sdk install java 11.0.6.hs-adpt \
+             && sdk default java 11.0.6.hs-adpt"
 
 # Give back control
 USER root
