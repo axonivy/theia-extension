@@ -98,6 +98,11 @@
     "download:plugins": "theia download:plugins"
   },
   "theia": {
-    "target": "browser"
+    "target": "browser",
+    "frontend": {
+      "config": {
+        "applicationName": "Axon.ivy Theia IDE"
+      }
+    }
   }
 }

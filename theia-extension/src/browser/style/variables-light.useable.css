@@ -1,5 +1,5 @@
 :root {
-    --theia-brand-logo-size: 15%;
-    --theia-brand-logo: url('../../../src/browser/icons/ivy-brand-light.png');
-    --theia-menu-logo: url('../../../src/browser/icons/ivy-menu.png');
+    --theia-brand-logo-size: 30%;
+    --theia-brand-logo: url('../../../src/browser/icons/ivy-brand-light.svg');
+    --theia-menu-logo: url('../../../src/browser/icons/ivy-menu.svg');
 }
