@@ -8,17 +8,20 @@ import { TerminalWidgetFactoryOptions } from '@theia/terminal/lib/browser/termin
 export namespace AxonIvyCommands {
     export const Deploy = {
         id: 'Deploy.to.engine',
-        label: 'Deploy to engine'
+        label: 'Deploy to engine',
+        iconClass: 'fa fa-upload'
     }
 
     export const Start = {
         id: 'Start.engine',
-        label: 'Start engine'
+        label: 'Start engine',
+        iconClass: 'fa fa-play'
     };
 
     export const Stop = {
         id: 'Stop.engine',
-        label: 'Stop engine'
+        label: 'Stop engine',
+        iconClass: 'fa fa-stop'
     };
 
     export const NewProject = {
