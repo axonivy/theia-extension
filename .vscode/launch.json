@@ -1,0 +1,36 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Launch Browser Backend",
+            "program": "${workspaceRoot}/browser-app/src-gen/backend/main.js",
+            "args": [
+              "--hostname=0.0.0.0",
+              "--port=3000",
+              "--no-cluster",
+              "--app-project-path=${workspaceRoot}/browser-app",
+              "--plugins=local-dir:plugins",
+              "--hosted-plugin-inspect=9339"
+            ],
+            "env": {
+              "NODE_ENV": "development",
+              "THEIA_WEBVIEW_EXTERNAL_ENDPOINT": "${env:THEIA_WEBVIEW_EXTERNAL_ENDPOINT}"
+            },
+            "sourceMaps": true,
+            "outFiles": [
+              "${workspaceRoot}/examples/browser/src-gen/backend/*.js",
+              "${workspaceRoot}/examples/browser/lib/**/*.js",
+              "${workspaceRoot}/packages/*/lib/**/*.js",
+              "${workspaceRoot}/dev-packages/*/lib/**/*.js"
+            ],
+            "smartStep": true,
+            "internalConsoleOptions": "openOnSessionStart",
+            "outputCapture": "std"
+          },
+    ]
+}
