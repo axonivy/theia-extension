@@ -1,0 +1,15 @@
+.iar-project-icon {
+    display: inline-block;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    position: relative;
+    top: 3px;
+    width: 13px;
+    margin-right: 3px;
+}
+.iar-project-icon::before{
+    text-align: center;
+    content: url(ivy-menu.svg);
+}
