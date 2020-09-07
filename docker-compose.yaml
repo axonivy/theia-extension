@@ -1,0 +1,13 @@
+version: "3.8"
+
+services:
+
+  theia:
+    build: .
+    container_name: theia
+    hostname: theia
+    volumes:
+      - ~/theia-project:/home/project
+      - /etc/timezone:/etc/timezone
+    ports:
+      - 3000:3000
