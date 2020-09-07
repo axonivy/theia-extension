@@ -1,64 +1,53 @@
-ARG NODE_VERSION=12.18.3
-
-FROM node:${NODE_VERSION}-alpine as build
-RUN apk add --no-cache make gcc g++ python
-WORKDIR /home/ivy
-COPY ./lerna.json ./lerna.json
-COPY ./package.json ./package.json
-COPY ./yarn.lock ./yarn.lock
-COPY ./theia-extension/ ./theia-extension/
-COPY ./browser-app/ ./browser-app/
-RUN yarn --cwd theia-extension
-RUN yarn --cwd browser-app
-#RUN yarn --production --cwd browser-app 
-
 FROM axonivy/axonivy-engine:dev
 
-USER root
-RUN apt-get update \
-    && apt-get -y install python2 \
-    && apt-get -y install gcc \
-    && apt-get -y install g++ \
-    && apt-get -y install libc6-dev
+ARG NODE_VERSION=12.18.3
+ENV NODE_VERSION $NODE_VERSION
 
-RUN mkdir /home/ivy && chown ivy:ivy /home/ivy
-RUN mkdir /home/project && chown ivy:ivy /home/project
+USER root
+
+#Common deps
+RUN apt-get update && \
+    apt-get -y install build-essential \
+                       curl \
+                       git \
+                       gpg \
+                       maven \
+                       make \
+                       python2 \
+                       sudo \
+                       wget \
+                       xz-utils && \
+    rm -rf /var/cache/apt/* && \
+    rm -rf /var/lib/apt/lists/* && \
+    rm -rf /tmp/*
+
+## User account
+RUN adduser ivy sudo && \
+    echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
+
+RUN mkdir /home/ivy && chown ivy:ivy /home/ivy && \
+    mkdir /home/project && chown ivy:ivy /home/project
+
 USER ivy
 
 RUN wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
-RUN bash -c ". $HOME/.nvm/nvm.sh \
-    && nvm install 12 \
-    && nvm use 12 \
-    && npm install -g yarn"
+RUN bash -c ". $HOME/.nvm/nvm.sh && \
+    nvm install $NODE_VERSION && \
+    nvm use $NODE_VERSION && \
+    npm install -g yarn"
 
+ENV PATH="/home/ivy/.nvm/versions/node/v$NODE_VERSION/bin:$PATH"
 
-ENV PATH="/home/ivy/.nvm/versions/node/v12.18.3/bin:$PATH"
-
-#COPY --from=build --chown=ivy:ivy /home/ivy /home/ivy
-
-USER root
-RUN apt-get update \
-    && apt-get -y install musl-dev
-
-RUN ln -s /usr/lib/x86_64-linux-musl/libc.so /lib/libc.musl-x86_64.so.1
-
-USER ivy
 WORKDIR /home/ivy
-COPY ./lerna.json ./lerna.json
-COPY ./package.json ./package.json
-COPY ./yarn.lock ./yarn.lock
-COPY ./theia-extension/ ./theia-extension/
-COPY ./browser-app/ ./browser-app/
+COPY --chown=ivy:ivy ./lerna.json ./lerna.json
+COPY --chown=ivy:ivy ./package.json ./package.json
+COPY --chown=ivy:ivy ./yarn.lock ./yarn.lock
+COPY --chown=ivy:ivy ./theia-extension/ ./theia-extension/
+COPY --chown=ivy:ivy ./browser-app/ ./browser-app/
 RUN yarn --cwd theia-extension
 RUN yarn --cwd browser-app
 
-
-
-
-
-#ENV SHELL=/bin/bash \
-#   THEIA_DEFAULT_PLUGINS=local-dir:/home/ivy/browser-app/plugins
+ENV THEIA_DEFAULT_PLUGINS="local-dir:/home/ivy/browser-app/plugins"
 
 EXPOSE 3000
-ENTRYPOINT []
-#ENTRYPOINT [ "/home/ivy/.nvm/versions/node/v12.18.3/bin/node", "/home/ivy/browser-app/src-gen/backend/main.js", "/home/project", "--hostname=0.0.0.0" ]
+ENTRYPOINT [ "node", "/home/ivy/browser-app/src-gen/backend/main.js", "/home/project", "--hostname=0.0.0.0" ]
