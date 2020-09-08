@@ -7,7 +7,8 @@ services:
     container_name: theia
     hostname: theia
     volumes:
-      - ~/theia-project:/home/project
+      - ~/theia/project:/home/project
+      - ~/.ssh/id_rsa:/home/ivy/.ssh/id_rsa
       - /etc/timezone:/etc/timezone
     ports:
       - 3000:3000

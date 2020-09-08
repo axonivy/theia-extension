@@ -64,6 +64,7 @@ RUN yarn --cwd theia-extension --cache-folder ./ycache && \
     rm -rf ./ycache
 
 ENV THEIA_DEFAULT_PLUGINS="local-dir:/home/ivy/browser-app/plugins"
+ENV SHELL=/bin/bash
 
 EXPOSE 3000
 ENTRYPOINT [ "node", "/home/ivy/browser-app/src-gen/backend/main.js", "/home/project", "--hostname=0.0.0.0" ]
