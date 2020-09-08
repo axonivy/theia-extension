@@ -1,4 +1,4 @@
-FROM adoptopenjdk:11-jdk-hotspot
+FROM maven:3.6.3-adoptopenjdk-11
 
 ARG NODE_VERSION=12.18.3
 ENV NODE_VERSION $NODE_VERSION
