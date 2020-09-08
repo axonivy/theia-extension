@@ -15,7 +15,8 @@
     "@theia/process": "latest",
     "@theia/terminal": "latest",
     "@theia/workspace": "latest",
-    "theia-extension": "0.0.0"
+    "theia-extension": "0.0.0",
+    "editor-inscriptions": "0.0.0"
   },
   "devDependencies": {
     "@theia/cli": "latest"

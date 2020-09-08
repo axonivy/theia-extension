@@ -10,7 +10,7 @@
   },
   "workspaces": [
     "theia-extension",
-    "browser-app",
-    "electron-app"
+    "editor-inscriptions",
+    "browser-app"
   ]
 }
