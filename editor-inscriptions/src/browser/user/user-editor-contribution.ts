@@ -3,7 +3,6 @@ import { CommandContribution, CommandRegistry, MenuContribution, MenuModelRegist
 import { CommonMenus } from "@theia/core/lib/browser";
 import { FileStatNode } from "@theia/filesystem/lib/browser/file-tree/file-tree";
 import { FileTreeLabelProvider } from "@theia/filesystem/lib/browser/file-tree/file-tree-label-provider";
-import URI from "@theia/core/lib/common/uri";
 import { UserEditorWidget } from "./user-editor-widget";
 
 export const UserEditorCommand = {
@@ -42,7 +41,7 @@ export class TestUsersLabelProviderContribution extends FileTreeLabelProvider {
     canHandle(element: object): number {
         if (FileStatNode.is(element)) {
             let node = element.fileStat;
-            if (new URI(node.uri).path.ext === UserEditorWidget.CAN_HANDLE) {
+            if (node.resource.path.ext === UserEditorWidget.CAN_HANDLE) {
                 return super.canHandle(element)+1
             }
         }
