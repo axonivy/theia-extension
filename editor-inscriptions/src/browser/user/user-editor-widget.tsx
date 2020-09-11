@@ -183,7 +183,7 @@ export class UserEditorWidget extends ReactWidget {
         }
         let confirm = new ConfirmDialog({
             title: 'Remove user',
-            msg: 'Do you really want to remove the user ' + selectedUser?.username._text
+            msg: 'Do you really want to remove the user ' + selectedUser.userName
         });
         const remove = await confirm.open();
         if (remove)
@@ -191,7 +191,7 @@ export class UserEditorWidget extends ReactWidget {
             this.state.users.forEach( (user: User, index: number) => {
                 if(user === selectedUser) {
                     this.state.users.splice(index,1);
-                    this.messageService.info('User ' + selectedUser?.username._text + ' was removed successful');
+                    this.messageService.info('User ' + selectedUser.userName + ' was removed successful');
                 }
                 this.setUsers();
             });
