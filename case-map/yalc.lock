@@ -1,0 +1,10 @@
+{
+  "version": "v1",
+  "packages": {
+    "case-map-ui": {
+      "version": "0.1.0",
+      "signature": "9c1f604d977231e197e0c3dee3ed8ce7",
+      "file": true
+    }
+  }
+}

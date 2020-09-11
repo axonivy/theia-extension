@@ -40,7 +40,8 @@
     "@theia/vsx-registry": "latest",
     "@theia/workspace": "latest",
     "theia-extension": "0.0.0",
-    "editor-inscriptions": "0.0.0"
+    "editor-inscriptions": "0.0.0",
+    "case-map": "0.0.0"
 },
 "devDependencies": {
     "@theia/cli": "latest"

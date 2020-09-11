@@ -11,6 +11,7 @@
   "workspaces": [
     "theia-extension",
     "editor-inscriptions",
+    "case-map",
     "browser-app"
   ]
 }
