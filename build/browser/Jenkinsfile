@@ -17,7 +17,7 @@ pipeline {
           docker.withRegistry('https://registry.ivyteam.io', 'registry.ivyteam.io') {
             def image = docker.build("axonivy/ivy-theia:latest", "-f build/browser/Dockerfile .")
             if (env.BRANCH_NAME == 'master') {
-                baseImage.push()
+                image.push()
             }
           }
         }
