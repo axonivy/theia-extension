@@ -2,10 +2,12 @@ version: "3.8"
 
 services:
 
-  theia:
-    build: .
-    container_name: theia
-    hostname: theia
+  ivy-theia:
+    build:
+      context: ./../../
+      dockerfile: build/browser/Dockerfile
+    container_name: ivy-theia
+    hostname: ivy-theia
     volumes:
       - ~/theia/project:/home/project
       - ~/.ssh/id_rsa:/home/ivy/.ssh/id_rsa

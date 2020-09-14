@@ -57,9 +57,11 @@ COPY --chown=ivy:ivy ./lerna.json ./lerna.json
 COPY --chown=ivy:ivy ./package.json ./package.json
 COPY --chown=ivy:ivy ./yarn.lock ./yarn.lock
 COPY --chown=ivy:ivy ./theia-extension/ ./theia-extension/
+COPY --chown=ivy:ivy ./editor-inscriptions/ ./editor-inscriptions/
 COPY --chown=ivy:ivy ./browser-app/ ./browser-app/
 
-RUN yarn --cwd theia-extension --cache-folder ./ycache && \
+RUN yarn --cwd theia-extension/ --cache-folder ./ycache && \
+    yarn --cwd editor-inscriptions/ --cache-folder ./ycache&& \
     yarn --cwd browser-app --cache-folder ./ycache && \
     rm -rf ./ycache
 
