@@ -14,12 +14,10 @@ pipeline {
     stage('build') {
       steps {
         script {
-          dir(".") {
-            docker.withRegistry('https://registry.ivyteam.io', 'registry.ivyteam.io') {
-              def image = docker.build("axonivy/ivy-theia:latest")
-              if (env.BRANCH_NAME == 'master') {
-                  baseImage.push()
-              }
+          docker.withRegistry('https://registry.ivyteam.io', 'registry.ivyteam.io') {
+            def image = docker.build("axonivy/ivy-theia:latest", "-f build/browser/Dockerfile .")
+            if (env.BRANCH_NAME == 'master') {
+                baseImage.push()
             }
           }
         }
