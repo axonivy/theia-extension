@@ -1,6 +1,3 @@
-
-
-
 pipeline {
   agent any
 
@@ -14,17 +11,16 @@ pipeline {
   }
 
   stages {
-
     stage('build') {
       steps {
         script {
-          dir(".")
+          dir(".") {
             docker.withRegistry('https://registry.ivyteam.io', 'registry.ivyteam.io') {
               def image = docker.build("axonivy/ivy-theia:latest")
               if (env.BRANCH_NAME == 'master') {
                   baseImage.push()
               }
-              }
+            }
           }
         }
       }
