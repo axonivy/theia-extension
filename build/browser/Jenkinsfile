@@ -1,0 +1,33 @@
+
+
+
+pipeline {
+  agent any
+
+  options {
+    buildDiscarder(logRotator(artifactNumToKeepStr: '50'))
+  }
+
+  triggers {
+    pollSCM 'H/10 * * * *'
+    cron '@midnight'
+  }
+
+  stages {
+
+    stage('build') {
+      steps {
+        script {
+          dir(".")
+            docker.withRegistry('https://registry.ivyteam.io', 'registry.ivyteam.io') {
+              def image = docker.build("axonivy/ivy-theia:latest")
+              if (env.BRANCH_NAME == 'master') {
+                  baseImage.push()
+              }
+              }
+          }
+        }
+      }
+    }
+  }
+}
