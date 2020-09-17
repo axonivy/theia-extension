@@ -13,7 +13,7 @@ RUN apt-get update && \
                        gpg \
                        make \
 # use python2 for ubuntu 20.04
-                       python \ 
+                       python \
                        sudo \
                        wget \
                        xz-utils && \
@@ -56,14 +56,15 @@ WORKDIR /home/ivy
 COPY --chown=ivy:ivy ./lerna.json ./lerna.json
 COPY --chown=ivy:ivy ./package.json ./package.json
 COPY --chown=ivy:ivy ./yarn.lock ./yarn.lock
+COPY --chown=ivy:ivy ./.yarnrc ./.yarnrc
 COPY --chown=ivy:ivy ./theia-extension/ ./theia-extension/
 COPY --chown=ivy:ivy ./editor-inscriptions/ ./editor-inscriptions/
 COPY --chown=ivy:ivy ./browser-app/ ./browser-app/
 
-RUN yarn --cwd theia-extension/ --cache-folder ./ycache && \
-    yarn --cwd editor-inscriptions/ --cache-folder ./ycache&& \
-    yarn --cwd browser-app --cache-folder ./ycache && \
-    rm -rf ./ycache
+RUN yarn --cwd theia-extension/ && \
+    yarn --cwd editor-inscriptions/ && \
+    yarn --cwd browser-app && \
+    rm -rf ./.packages-cache
 
 ENV THEIA_DEFAULT_PLUGINS="local-dir:/home/ivy/browser-app/plugins"
 ENV SHELL=/bin/bash
