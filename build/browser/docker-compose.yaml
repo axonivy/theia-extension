@@ -1,0 +1,16 @@
+version: "3.8"
+
+services:
+
+  ivy-theia:
+    build:
+      context: ./../../
+      dockerfile: build/browser/Dockerfile
+    container_name: ivy-theia
+    hostname: ivy-theia
+    volumes:
+      - ~/theia/project:/home/project
+      - ~/.ssh/id_rsa:/home/ivy/.ssh/id_rsa
+      - /etc/timezone:/etc/timezone
+    ports:
+      - 3000:3000

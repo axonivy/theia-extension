@@ -1,7 +1,15 @@
 {
   "private": true,
   "name": "browser-app",
-  "version": "0.0.0",
+  "version": "1.0.0",
+  "theia": {
+    "target": "browser",
+    "frontend": {
+      "config": {
+        "applicationName": "Axon.ivy Theia IDE"
+      }
+    }
+  },
   "dependencies": {
     "@theia/callhierarchy": "latest",
     "@theia/console": "latest",
@@ -128,13 +136,5 @@
     "watch": "yarn build --watch",
     "start": "theia start --plugins=local-dir:plugins",
     "download:plugins": "theia download:plugins"
-  },
-  "theia": {
-    "target": "browser",
-    "frontend": {
-      "config": {
-        "applicationName": "Axon.ivy Theia IDE"
-      }
-    }
   }
 }

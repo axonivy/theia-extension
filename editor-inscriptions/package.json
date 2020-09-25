@@ -9,8 +9,9 @@
     "src"
   ],
   "dependencies": {
-    "@theia/core": "latest", 
-    "@theia/filesystem": "latest",
+    "@theia/core": "latest",
+    "@theia/editor": "latest",
+    "@theia/monaco": "latest",
     "primereact": "^5.0.0-rc.1",
     "primeicons": "^1.0.0",
     "primeflex": "^2.0.0",
