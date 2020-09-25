@@ -64,7 +64,8 @@ COPY --chown=ivy:ivy ./browser-app/ ./browser-app/
 RUN yarn --cwd theia-extension/ && \
     yarn --cwd editor-inscriptions/ && \
     yarn --cwd browser-app && \
-    rm -rf ./.packages-cache
+    rm -rf ./.packages-cache && \
+    rm -rf ./.cache
 
 ENV THEIA_DEFAULT_PLUGINS="local-dir:/home/ivy/browser-app/plugins"
 ENV SHELL=/bin/bash
