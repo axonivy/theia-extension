@@ -64,6 +64,7 @@ COPY --chown=ivy:ivy ./browser-app/ ./browser-app/
 RUN yarn --cwd theia-extension/ && \
     yarn --cwd editor-inscriptions/ && \
     yarn --cwd browser-app && \
+    yarn --production && \
     rm -rf ./.packages-cache && \
     rm -rf ./.cache
 

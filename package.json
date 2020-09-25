@@ -5,6 +5,9 @@
     "rebuild:browser": "theia rebuild:browser",
     "rebuild:electron": "theia rebuild:electron"
   },
+  "dependencies": {
+    "fs-extra": "^4.0.3"
+  },
   "devDependencies": {
     "lerna": "3.16.4"
   },
