@@ -64,3 +64,12 @@ Start watching of the electron example.
     yarn watch
 
 Launch `Start Electron Backend` configuration from VS code.
+
+
+## Upgrade to the latest theia version
+
+Just run in the project root after a new theia version was published:
+
+    yarn upgrade
+
+Then commit the changed yarn.lock file
