@@ -51,27 +51,25 @@ export class TheiaExtensionCommandContribution implements CommandContribution {
                 find -iname '*.iar' -exec cp {} theia-app \\; && \n\
                 zip -j theia-app.zip theia-app/* && \n\
                 rm -r theia-app && \n\
-                mv theia-app.zip .ivy-engine/deploy/; \n", 
+                mv theia-app.zip $IVY_HOME/deploy/; \n",
                 "Build projects and deploy them to the engine")
         });
         registry.registerCommand(AxonIvyCommands.Start, {
-            execute: () => this.openTerminal("Axon Ivy Engine", 
-                "mvn com.axonivy.ivy.ci:project-build-plugin:7.4.0-SNAPSHOT:installEngine \
-                -Divy.engine.list.url=https://developer.axonivy.com/download/dev \
-                -Divy.engine.directory=./.ivy-engine \n \
-                .ivy-engine/bin/AxonIvyEngine \n", "Start engine...")
+          execute: () => this.openTerminal("Axon.ivy Engine",
+              "$IVY_HOME/bin/AxonIvyEngine\n",
+              "Start Axon.ivy Engine...")
         });
         registry.registerCommand(AxonIvyCommands.Stop, {
-            execute: () => this.openTerminal("Axon Ivy Engine",
-                "shutdown\n", 
-                "Stop engine...")
+            execute: () => this.openTerminal("Axon.ivy Engine",
+                "shutdown\n",
+                "Stop Axon.ivy Engine...")
         });
     }
 
     async openTerminal(terminalTitle: string, command: string, info: string): Promise<void> {
         this.terminal = this.terminalService.all.find(t => t.title.label == terminalTitle)
         if (!this.terminal) {
-            this.terminal = <TerminalWidget>await this.terminalService.newTerminal(<TerminalWidgetFactoryOptions>{ 
+            this.terminal = <TerminalWidget>await this.terminalService.newTerminal(<TerminalWidgetFactoryOptions>{
                 created: new Date().toString(),
                 title: terminalTitle,
                 useServerTitle: false,
@@ -79,7 +77,7 @@ export class TheiaExtensionCommandContribution implements CommandContribution {
             });
             await this.terminal.start();
         }
-        this.terminalService.activateTerminal(this.terminal);
+        this.terminalService.open(this.terminal);
         this.terminal.sendText(command);
         this.messageService.info(info)
     }
