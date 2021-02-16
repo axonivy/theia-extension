@@ -12,6 +12,7 @@ RUN apt-get update && \
                        git \
                        gpg \
                        make \
+                       zip \
 # use python2 for ubuntu 20.04
                        python \
                        sudo \
